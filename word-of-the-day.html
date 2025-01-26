@@ -3,36 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word of the Day - Language Learning</title>
+    <title>Word of the Day</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1 id="welcome-message">Word of the Day</h1>
+
+        <!-- Word of the Day section -->
         <div class="word-of-the-day">
-            <h2 id="word">Bonjour</h2>
-            <p id="meaning">Good morning (in French)</p>
-            <p id="sentence">Example: "Bonjour! Comment ça va?" (Good morning! How are you?)</p>
-            <button onclick="newWord()">Get New Word</button>
+            <h2 id="word">Bonjour</h2> <!-- Placeholder for word -->
+            <p id="meaning">Good morning (in French)</p> <!-- Placeholder for meaning -->
+            <p id="sentence">Example: "Bonjour! Comment ça va?" (Good morning! How are you?)</p> <!-- Placeholder for sentence -->
+            <button onclick="newWord()">Get New Word</button> <!-- Button to get a new word -->
         </div>
     </div>
 
     <script>
-        // Function to get a random word
-        function newWord() {
-            const words = [
-                { word: 'Hola', meaning: 'Hello (in Spanish)', sentence: '"Hola! ¿Cómo estás?" (Hello! How are you?)' },
-                { word: 'Bonjour', meaning: 'Good morning (in French)', sentence: '"Bonjour! Comment ça va?" (Good morning! How are you?)' },
-                { word: 'Guten Morgen', meaning: 'Good morning (in German)', sentence: '"Guten Morgen! Wie geht\'s dir?" (Good morning! How are you?)' }
-            ];
+        // List of words with their meanings and example sentences
+        const words = [
+            { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
+            { word: "Hola", meaning: "Hello (in Spanish)", sentence: 'Example: "¡Hola! ¿Cómo estás?" (Hello! How are you?)' },
+            { word: "Ciao", meaning: "Hello/Goodbye (in Italian)", sentence: 'Example: "Ciao! Come stai?" (Hello! How are you?)' },
+            { word: "Guten Morgen", meaning: "Good morning (in German)", sentence: 'Example: "Guten Morgen! Wie geht\'s?" (Good morning! How are you?)' },
+            { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
+    { word: "Konnichiwa", meaning: "Good afternoon (in Japanese)", sentence: 'Example: "Konnichiwa! Ogenki desu ka?" (Good afternoon! How are you?)' },
+    { word: "Namaste", meaning: "Hello (in Hindi)", sentence: 'Example: "Namaste! Kaise ho?" (Hello! How are you?)' },
+    { word: "Olá", meaning: "Hello (in Portuguese)", sentence: 'Example: "Olá! Como você está?" (Hello! How are you?)' },
+    { word: "Merhaba", meaning: "Hello (in Turkish)", sentence: 'Example: "Merhaba! Nasılsın?" (Hello! How are you?)' },
+    { word: "Zdravstvuyte", meaning: "Hello (in Russian)", sentence: 'Example: "Zdravstvuyte! Kak dela?" (Hello! How are you?)' },
+    { word: "Salam", meaning: "Hello (in Arabic)", sentence: 'Example: "Salam! Kayfa halak?" (Hello! How are you?)' },
+    { word: "Sawubona", meaning: "Hello (in Zulu)", sentence: 'Example: "Sawubona! Unjani?" (Hello! How are you?)' },
+    { word: "Shalom", meaning: "Hello/Peace (in Hebrew)", sentence: 'Example: "Shalom! Ma nishma?" (Hello! How are you?)' },
+    { word: "Xin chào", meaning: "Hello (in Vietnamese)", sentence: 'Example: "Xin chào! Bạn khỏe không?" (Hello! How are you?)' },
+    { word: "Sawasdee", meaning: "Hello (in Thai)", sentence: 'Example: "Sawasdee! Sabai dee mai?" (Hello! How are you?)' },
+    { word: "Annyeong", meaning: "Hello (in Korean)", sentence: 'Example: "Annyeong! Jal jinae?" (Hello! How are you?)' },
+    { word: "Hej", meaning: "Hello (in Swedish)", sentence: 'Example: "Hej! Hur mår du?" (Hello! How are you?)' },
+    { word: "Salut", meaning: "Hello (in French)", sentence: 'Example: "Salut! Comment ça va?" (Hello! How are you?)' },
+    { word: "Ahoj", meaning: "Hello (in Czech)", sentence: 'Example: "Ahoj! Jak se máš?" (Hello! How are you?)' },
+    { word: "Kamusta", meaning: "Hello (in Filipino)", sentence: 'Example: "Kamusta! Kumusta ka?" (Hello! How are you?)' },
+    { word: "Jambo", meaning: "Hello (in Swahili)", sentence: 'Example: "Jambo! Habari gani?" (Hello! How are you?)' },
+    { word: "Bună ziua", meaning: "Good day (in Romanian)", sentence: 'Example: "Bună ziua! Ce faci?" (Good day! How are you?)' },
+    { word: "Helo", meaning: "Hello (in Welsh)", sentence: 'Example: "Helo! Sut wyt ti?" (Hello! How are you?)' },
+    { word: "Dobrý den", meaning: "Good day (in Czech)", sentence: 'Example: "Dobrý den! Jak se máte?" (Good day! How are you?)' },
+    { word: "Tere", meaning: "Hello (in Estonian)", sentence: 'Example: "Tere! Kuidas sul läheb?" (Hello! How are you?)' },
+    { word: "Kia ora", meaning: "Hello (in Maori)", sentence: 'Example: "Kia ora! Kei te pēhea koe?" (Hello! How are you?)' },
+    { word: "Hei", meaning: "Hello (in Finnish)", sentence: 'Example: "Hei! Miten menee?" (Hello! How are you?)' },
+    { word: "Ola", meaning: "Hello (in Galician)", sentence: 'Example: "Ola! Como estás?" (Hello! How are you?)' },
+    { word: "Cześć", meaning: "Hello (in Polish)", sentence: 'Example: "Cześć! Jak się masz?" (Hello! How are you?)' },
+    { word: "Halo", meaning: "Hello (in Indonesian)", sentence: 'Example: "Halo! Apa kabar?" (Hello! How are you?)' },
+    { word: "Sveiki", meaning: "Hello (in Latvian)", sentence: 'Example: "Sveiki! Kā tev iet?" (Hello! How are you?)' },
+    { word: "Holla", meaning: "Hello (in Spanish slang)", sentence: 'Example: "Holla! ¿Qué tal?" (Hello! How are you?)' },
+    { word: "Kamusta", meaning: "Hello (in Tagalog)", sentence: 'Example: "Kamusta! Ano ang balita?" (Hello! How are you?)' },
+    { word: "Pryvit", meaning: "Hello (in Ukrainian)", sentence: 'Example: "Pryvit! Yak spravy?" (Hello! How are you?)' },
+    { word: "Saluton", meaning: "Hello (in Esperanto)", sentence: 'Example: "Saluton! Kiel vi fartas?" (Hello! How are you?)' },
+    { word: "Hei", meaning: "Hello (in Norwegian)", sentence: 'Example: "Hei! Hvordan har du det?" (Hello! How are you?)' },
+    { word: "Tere", meaning: "Hello (in Estonian)", sentence: 'Example: "Tere! Kuidas sul läheb?" (Hello! How are you?)' },
+    { word: "Moi", meaning: "Hello (in Finnish)", sentence: 'Example: "Moi! Miten menee?" (Hello! How are you?)' },
+    { word: "Aloha", meaning: "Hello/Goodbye (in Hawaiian)", sentence: 'Example: "Aloha! Pehea oe?" (Hello! How are you?)' },
+    { word: "Hujambo", meaning: "Hello (in Swahili)", sentence: 'Example: "Hujambo! Habari gani?" (Hello! How are you?)' },
+    { word: "Yo", meaning: "Hello (in American slang)", sentence: 'Example: "Yo! What\'s up?" (Hello! What\'s up?)' },
+    { word: "Szia", meaning: "Hello (in Hungarian)", sentence: 'Example: "Szia! Hogy vagy?" (Hello! How are you?)' },
+    { word: "Yassou", meaning: "Hello (in Greek)", sentence: 'Example: "Yassou! Ti kaneis?" (Hello! How are you?)' },
+    { word: "Sannu", meaning: "Hello (in Hausa)", sentence: 'Example: "Sannu! Lafiya lau?" (Hello! How are you?)' },
+    { word: "Hail", meaning: "Hello (in Scottish)", sentence: 'Example: "Hail! How are ye?" (Hello! How are you?)' },
+    { word: "An-nyeong", meaning: "Hello (in Korean)", sentence: 'Example: "An-nyeong! Jal jinae?" (Hello! How are you?)' },
+    { word: "Nǐ hǎo", meaning: "Hello (in Mandarin Chinese)", sentence: 'Example: "Nǐ hǎo! Nǐ hǎo ma?" (Hello! How are you?)' },
+    { word: "G\'day", meaning: "Hello (in Australian English)", sentence: 'Example: "G\'day! How\'s it going?" (Hello! How\'s it going?)' },
+    { word: "Salve", meaning: "Hello (in Latin)", sentence: 'Example: "Salve! Quid agis?" (Hello! How are you?)' },
+    { word: "Effervescent", meaning: "Bubbling, sparkling (in Latin)", sentence: 'Example: "Her effervescent personality lit up the room."'},
+    { word: "Ephemeral", meaning: "Lasting for a very short time (in Greek)", sentence: 'Example: "The beauty of the sunset was ephemeral, vanishing as quickly as it arrived."'},
+    { word: "Serendipity", meaning: "A fortunate accident (in English)", sentence: 'Example: "Their meeting at the cafe was pure serendipity."'},
+    { word: "Ebullient", meaning: "Overflowing with enthusiasm or excitement (in Latin)", sentence: 'Example: "The ebullient crowd cheered as the team scored."'},
+    { word: "Quixotic", meaning: "Extremely idealistic, unrealistic (in Spanish)", sentence: 'Example: "His quixotic quest to change the world was admired by some, but impractical."'},
+    { word: "Zephyr", meaning: "A gentle breeze (in Greek)", sentence: 'Example: "A soft zephyr blew across the meadow, making the grass sway gently."'},
+    { word: "Limerence", meaning: "The state of being infatuated with someone (in English)", sentence: 'Example: "His limerence was so strong that he could not stop thinking about her."'},
+    { word: "Bucolic", meaning: "Relating to the pleasant aspects of the countryside (in Greek)", sentence: 'Example: "The bucolic setting of the farm made the visitors feel at peace."'},
+    { word: "Nefarious", meaning: "Wicked or criminal (in Latin)", sentence: 'Example: "The villain’s nefarious actions caused chaos throughout the city."'},
+    { word: "Cacophony", meaning: "A harsh, discordant mixture of sounds (in Greek)", sentence: 'Example: "The cacophony of car horns and shouting filled the streets."'},
+    { word: "Trepidation", meaning: "A feeling of fear or anxiety (in Latin)", sentence: 'Example: "He entered the haunted house with great trepidation."'},
+    { word: "Ineffable", meaning: "Too great or extreme to be described in words (in Latin)", sentence: 'Example: "The ineffable beauty of the landscape left everyone speechless."'},
+    { word: "Lugubrious", meaning: "Looking or sounding sad and dismal (in Latin)", sentence: 'Example: "His lugubrious expression made everyone feel sorrowful."'},
+    { word: "Effulgent", meaning: "Shining brightly (in Latin)", sentence: 'Example: "The effulgent stars lit up the night sky like diamonds."'},
+    { word: "Sycophant", meaning: "A person who seeks favor by flattering others (in Greek)", sentence: 'Example: "The sycophant tried to gain favor by constantly complimenting his boss."'},
+    { word: "Hapax", meaning: "A word or phrase used only once (in Greek)", sentence: 'Example: "The poem contained a hapax that intrigued many linguists."'},
+    { word: "Sonder", meaning: "The realization that each passerby has a life as vivid and complex as your own (in English)", sentence: 'Example: "He experienced a moment of sonder as he watched the crowd move by."'},
+    { word: "Mellifluous", meaning: "Sweet or musical; pleasant to hear (in Latin)", sentence: 'Example: "Her mellifluous voice calmed everyone in the room."'},
+    { word: "Sonorous", meaning: "Having a deep or full sound (in Latin)", sentence: 'Example: "The sonorous echoes of the church bell reverberated through the valley."'},
+    { word: "Lachrymose", meaning: "Tearful or given to weeping (in Latin)", sentence: 'Example: "The lachrymose farewell left everyone with tears in their eyes."'},
+    { word: "Ubiquitous", meaning: "Present, appearing, or found everywhere (in Latin)", sentence: 'Example: "Smartphones have become ubiquitous in modern society."'},
+    { word: "Recalcitrant", meaning: "Resisting authority or control (in Latin)", sentence: 'Example: "The recalcitrant student refused to follow the rules."'},
+    { word: "Peregrinate", meaning: "To travel or wander around (in Latin)", sentence: 'Example: "They decided to peregrinate across Europe during their summer vacation."'},
+    { word: "Obfuscate", meaning: "To confuse or obscure (in Latin)", sentence: 'Example: "The politician tried to obfuscate the issue with confusing statistics."'},
+    { word: "Surreptitious", meaning: "Kept secret, especially because it would not be approved of (in Latin)", sentence: 'Example: "They exchanged surreptitious glances during the meeting."'},
+    { word: "Panacea", meaning: "A universal remedy for all problems (in Greek)", sentence: 'Example: "Some people believe technology is a panacea for all modern problems."'},
+    { word: "Chiaroscuro", meaning: "The use of strong contrasts between light and dark (in Italian)", sentence: 'Example: "The artist’s painting featured dramatic chiaroscuro to highlight the emotions of the characters."'},
+    { word: "Cacophony", meaning: "A harsh, discordant mixture of sounds (in Greek)", sentence: 'Example: "The cacophony of the city made it difficult to concentrate."'},
+    { word: "Obsequious", meaning: "Excessively obedient or attentive (in Latin)", sentence: 'Example: "The obsequious assistant never disagreed with her boss."'},
+    { word: "Prosaic", meaning: "Commonplace or dull (in Latin)", sentence: 'Example: "The prosaic speech lacked any excitement or new ideas."'},
+    { word: "Recondite", meaning: "Little known or obscure (in Latin)", sentence: 'Example: "The recondite details of the ancient language fascinated the scholars."'},
+    { word: "Nostalgia", meaning: "A sentimental longing for the past (in Greek)", sentence: 'Example: "He felt a wave of nostalgia when he visited his childhood home."'},
+    { word: "Sublime", meaning: "Of such excellence or beauty as to inspire admiration or awe (in Latin)", sentence: 'Example: "The sublime view from the mountaintop left everyone speechless."'},
+    { word: "Vicarious", meaning: "Experienced through the feelings or actions of another (in Latin)", sentence: 'Example: "She lived vicariously through her friend’s exciting travels."'},
+    { word: "Lethologica", meaning: "The inability to remember a word or put your thoughts into words (in Greek)", sentence: 'Example: "He experienced a moment of lethologica and couldn’t recall her name."'},
+    { word: "Pernicious", meaning: "Causing great harm or damage (in Latin)", sentence: 'Example: "The pernicious effects of smoking were well-known."'},
+    { word: "Misanthrope", meaning: "A person who dislikes humankind (in Greek)", sentence: 'Example: "The misanthrope avoided social gatherings and preferred solitude."'},
+    { word: "Nadir", meaning: "The lowest point (in Arabic)", sentence: 'Example: "After the argument, he felt like he had reached his nadir."'},
+    { word: "Irascible", meaning: "Easily angered (in Latin)", sentence: 'Example: "His irascible nature made it difficult for him to work in teams."'},
+    { word: "Panache", meaning: "Flamboyant confidence of style or manner (in French)", sentence: 'Example: "He delivered the performance with great panache and style."'},
+    { word: "Camaraderie", meaning: "Mutual trust and friendship among people (in French)", sentence: 'Example: "The camaraderie between the team members was evident during the match."'},
+    { word: "Exuberant", meaning: "Full of energy, excitement, or cheerfulness (in Latin)", sentence: 'Example: "Her exuberant personality made her popular at every party."'},
+    { word: "Incandescent", meaning: "Emitting light as a result of being heated (in Latin)", sentence: 'Example: "The incandescent light bulb lit up the dark room."'},
+    { word: "Felicity", meaning: "Great happiness (in Latin)", sentence: 'Example: "The news of her promotion brought her immense felicity."'},
+    { word: "Recumbent", meaning: "Lying down, reclining (in Latin)", sentence: 'Example: "The recumbent figure on the sofa seemed lost in thought."'},
+    { word: "Elysian", meaning: "Relating to paradise or a place of ideal beauty (in Greek)", sentence: 'Example: "The Elysian landscape was breathtaking and serene."'}
+];// Add more words here up to 50 words as per your needs
 
+        // Function to select a random word and update the page
+        function newWord() {
+            // Get a random index from the words array
             const randomIndex = Math.floor(Math.random() * words.length);
-            document.getElementById('word').textContent = words[randomIndex].word;
-            document.getElementById('meaning').textContent = words[randomIndex].meaning;
-            document.getElementById('sentence').textContent = words[randomIndex].sentence;
+
+            // Get the random word and its details
+            const randomWord = words[randomIndex];
+
+            // Update the page with the new word, meaning, and example sentence
+            document.getElementById("word").textContent = randomWord.word;
+            document.getElementById("meaning").textContent = randomWord.meaning;
+            document.getElementById("sentence").textContent = randomWord.sentence;
         }
 
-        // Display user's name from localStorage
+        // Display user's name from localStorage and call the newWord function
         window.onload = function() {
             const userName = localStorage.getItem('name');
             if (userName) {
@@ -40,6 +141,7 @@
             } else {
                 window.location.href = "index.html"; // Redirect to login if no user is found
             }
+            newWord(); // Call the function to display an initial word
         };
     </script>
 </body>
