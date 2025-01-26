@@ -27,13 +27,14 @@
     font-size: 1.5em;
     font-weight: bold;
     color: white;
+    margin-left: 20px;
 }
 
 /* Navbar Links */
 .navbar-links {
     list-style: none; /* Removes bullet points */
     display: flex;
-    gap: 20px; /* Adds spacing between the links */
+    gap: 10px; /* Adds spacing between the links */
     margin: 0;
     padding: 0;
 }
