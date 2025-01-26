@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Word of the Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h1>Login to Word of the Day</h1>
+            <form id="loginForm" onsubmit="return submitForm()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Store name and email in localStorage
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+
+            // Redirect to the word-of-the-day page
+            window.location.href = "word-of-the-day.html";
+            return false;
+        }
+
+        window.onload = function() {
+            const userName = localStorage.getItem('name');
+            const userEmail = localStorage.getItem('email');
+            if (userName && userEmail) {
+                window.location.href = "word-of-the-day.html"; // Redirect if already logged in
+            }
+        };
+    </script>
+</body>
+</html>

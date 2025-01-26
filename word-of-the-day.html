@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word of the Day - Language Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="welcome-message">Word of the Day</h1>
+        <div class="word-of-the-day">
+            <h2 id="word">Bonjour</h2>
+            <p id="meaning">Good morning (in French)</p>
+            <p id="sentence">Example: "Bonjour! Comment ça va?" (Good morning! How are you?)</p>
+            <button onclick="newWord()">Get New Word</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to get a random word
+        function newWord() {
+            const words = [
+                { word: 'Hola', meaning: 'Hello (in Spanish)', sentence: '"Hola! ¿Cómo estás?" (Hello! How are you?)' },
+                { word: 'Bonjour', meaning: 'Good morning (in French)', sentence: '"Bonjour! Comment ça va?" (Good morning! How are you?)' },
+                { word: 'Guten Morgen', meaning: 'Good morning (in German)', sentence: '"Guten Morgen! Wie geht\'s dir?" (Good morning! How are you?)' }
+            ];
+
+            const randomIndex = Math.floor(Math.random() * words.length);
+            document.getElementById('word').textContent = words[randomIndex].word;
+            document.getElementById('meaning').textContent = words[randomIndex].meaning;
+            document.getElementById('sentence').textContent = words[randomIndex].sentence;
+        }
+
+        // Display user's name from localStorage
+        window.onload = function() {
+            const userName = localStorage.getItem('name');
+            if (userName) {
+                document.getElementById('welcome-message').textContent = `Word of the Day, ${userName}!`;
+            } else {
+                window.location.href = "index.html"; // Redirect to login if no user is found
+            }
+        };
+    </script>
+</body>
+</html>
