@@ -60,7 +60,7 @@ body {
 
 /* Submit button */
 button {
-    background-color: #4CAF50;
+    background-color:#007BFF;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -89,7 +89,7 @@ button:hover {
 }
 
 .word-of-the-day button {
-    background-color: #244a92;
+    background-color: #007BFF;
     color: white;
     padding: 10px 20px;
     border: none;
