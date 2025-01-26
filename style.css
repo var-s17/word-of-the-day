@@ -9,48 +9,65 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
+    height: 100vh;            /* Full viewport height */
     text-align: center;
 }
 
 /* Container to center the login form and content */
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 400px; /* Set a max-width for the form */
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Styling for the login form */
 .login-form {
-    max-width: 400px;
     width: 100%;
 }
 
+/* Title styling (Login) */
 .login-form h1 {
     margin-bottom: 20px;
+    font-size: 2em;
 }
 
-input[type="text"], input[type="email"] {
-    width: 100%;
+/* Display the label and input fields on the same line */
+.input-group {
+    display: flex;
+    justify-content: space-between;  /* This will push the input fields to the right */
+    margin-bottom: 20px;  /* Space between each input */
+}
+
+.input-group label {
+    font-size: 1.1em;
+    text-align: left;
+    width: 40%;  /* Adjust the width of the label */
+    padding-right: 10px;
+}
+
+.input-group input[type="text"], .input-group input[type="email"] {
+    width: 60%;  /* Adjust the width of the input */
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1em;
 }
 
+/* Submit button */
 button {
     background-color: #4CAF50;
-    color: rgb(0, 0, 0);
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    font-size: 1.1em;
 }
 
 button:hover {
@@ -72,8 +89,8 @@ button:hover {
 }
 
 .word-of-the-day button {
-    background-color: #7dcd31;
-    color: rgb(0, 0, 0);
+    background-color: #244a92;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -82,5 +99,5 @@ button:hover {
 }
 
 .word-of-the-day button:hover {
-    background-color: #0056b3;
+    background-color: #22d859;
 }
