@@ -43,6 +43,19 @@ const words = [
 ];
 
 // Function to display a random word
+function changeLanguage() {
+    const newLanguage = prompt("Choose a language: english, french, spanish, tamil").toLowerCase();
+    if (wordLists[newLanguage]) {
+        selectedLanguage = newLanguage;
+        localStorage.setItem("language", newLanguage);
+        words = wordLists[newLanguage];
+        alert(`Language changed to ${newLanguage}.`);
+        newWord(); // Display a word in the new language
+    } else {
+        alert("Invalid language choice.");
+    }
+}
+
 function newWord() {
     const randomIndex = Math.floor(Math.random() * words.length);
     const randomWord = words[randomIndex];
@@ -68,3 +81,21 @@ window.onload = function () {
     }
     newWord(); // Display an initial word
 };
+const wordLists = {
+    english: englishWords,  // English words
+    french: frenchWords,    // French words
+    spanish: spanishWords,  // Spanish words
+    tamil: tamilWords       // Tamil words
+};
+function changeLanguage() {
+    const newLanguage = prompt("Choose a language: english, french, spanish, tamil").toLowerCase();
+    if (wordLists[newLanguage]) {
+        selectedLanguage = newLanguage;
+        localStorage.setItem("language", newLanguage);
+        words = wordLists[newLanguage];
+        alert(`Language changed to ${newLanguage}.`);
+        newWord(); // Display a word in the new language
+    } else {
+        alert("Invalid language choice.");
+    }
+}
