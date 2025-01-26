@@ -12,167 +12,263 @@
         <div class="navbar-container">
             <h1 class="navbar-title">Word of the Day</h1>
             <ul class="navbar-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#" onclick="backToLogin()">Logout</a></li>
+                <li><a href="#" onclick="Home()">Home</a></li>
+                <li><a href="#" onclick="changeLanguage()">Language</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Word of the Day Section -->
     <div class="container">
-        <h1 id="welcome-message" class="welcome-title">Word of the Day</h1>
-
-        <!-- Word of the Day Section -->
+        <h1 id="welcome-message">Welcome!</h1>
         <div class="word-of-the-day">
-            <h2 id="word" class="word-title">Bonjour</h2>
-            <p id="meaning" class="word-meaning">Good morning (in French)</p>
-            <p id="sentence" class="word-sentence">Example: "Bonjour! Comment ça va?" (Good morning! How are you?)</p>
+            <h2 id="word" class="word-title">Hello</h2>
+            <p id="meaning" class="word-meaning">A greeting in English.</p>
+            <p id="sentence" class="word-sentence">Example: "Hello! How are you?"</p>
             <button onclick="newWord()" class="new-word-button">Get New Word</button>
         </div>
     </div>
 
     <script>
-        // Word List
-        const words = [
-            { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
-            { word: "Hola", meaning: "Hello (in Spanish)", sentence: 'Example: "¡Hola! ¿Cómo estás?" (Hello! How are you?)' },
-            { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
-            { word: "Hola", meaning: "Hello (in Spanish)", sentence: 'Example: "¡Hola! ¿Cómo estás?" (Hello! How are you?)' },
-            { word: "Ciao", meaning: "Hello/Goodbye (in Italian)", sentence: 'Example: "Ciao! Come stai?" (Hello! How are you?)' },
-            { word: "Guten Morgen", meaning: "Good morning (in German)", sentence: 'Example: "Guten Morgen! Wie geht\'s?" (Good morning! How are you?)' },
-            { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
-    { word: "Konnichiwa", meaning: "Good afternoon (in Japanese)", sentence: 'Example: "Konnichiwa! Ogenki desu ka?" (Good afternoon! How are you?)' },
-    { word: "Namaste", meaning: "Hello (in Hindi)", sentence: 'Example: "Namaste! Kaise ho?" (Hello! How are you?)' },
-    { word: "Olá", meaning: "Hello (in Portuguese)", sentence: 'Example: "Olá! Como você está?" (Hello! How are you?)' },
-    { word: "Merhaba", meaning: "Hello (in Turkish)", sentence: 'Example: "Merhaba! Nasılsın?" (Hello! How are you?)' },
-    { word: "Zdravstvuyte", meaning: "Hello (in Russian)", sentence: 'Example: "Zdravstvuyte! Kak dela?" (Hello! How are you?)' },
-    { word: "Salam", meaning: "Hello (in Arabic)", sentence: 'Example: "Salam! Kayfa halak?" (Hello! How are you?)' },
-    { word: "Sawubona", meaning: "Hello (in Zulu)", sentence: 'Example: "Sawubona! Unjani?" (Hello! How are you?)' },
-    { word: "Shalom", meaning: "Hello/Peace (in Hebrew)", sentence: 'Example: "Shalom! Ma nishma?" (Hello! How are you?)' },
-    { word: "Xin chào", meaning: "Hello (in Vietnamese)", sentence: 'Example: "Xin chào! Bạn khỏe không?" (Hello! How are you?)' },
-    { word: "Sawasdee", meaning: "Hello (in Thai)", sentence: 'Example: "Sawasdee! Sabai dee mai?" (Hello! How are you?)' },
-    { word: "Annyeong", meaning: "Hello (in Korean)", sentence: 'Example: "Annyeong! Jal jinae?" (Hello! How are you?)' },
-    { word: "Hej", meaning: "Hello (in Swedish)", sentence: 'Example: "Hej! Hur mår du?" (Hello! How are you?)' },
-    { word: "Salut", meaning: "Hello (in French)", sentence: 'Example: "Salut! Comment ça va?" (Hello! How are you?)' },
-    { word: "Ahoj", meaning: "Hello (in Czech)", sentence: 'Example: "Ahoj! Jak se máš?" (Hello! How are you?)' },
-    { word: "Kamusta", meaning: "Hello (in Filipino)", sentence: 'Example: "Kamusta! Kumusta ka?" (Hello! How are you?)' },
-    { word: "Jambo", meaning: "Hello (in Swahili)", sentence: 'Example: "Jambo! Habari gani?" (Hello! How are you?)' },
-    { word: "Bună ziua", meaning: "Good day (in Romanian)", sentence: 'Example: "Bună ziua! Ce faci?" (Good day! How are you?)' },
-    { word: "Helo", meaning: "Hello (in Welsh)", sentence: 'Example: "Helo! Sut wyt ti?" (Hello! How are you?)' },
-    { word: "Dobrý den", meaning: "Good day (in Czech)", sentence: 'Example: "Dobrý den! Jak se máte?" (Good day! How are you?)' },
-    { word: "Tere", meaning: "Hello (in Estonian)", sentence: 'Example: "Tere! Kuidas sul läheb?" (Hello! How are you?)' },
-    { word: "Kia ora", meaning: "Hello (in Maori)", sentence: 'Example: "Kia ora! Kei te pēhea koe?" (Hello! How are you?)' },
-    { word: "Hei", meaning: "Hello (in Finnish)", sentence: 'Example: "Hei! Miten menee?" (Hello! How are you?)' },
-    { word: "Ola", meaning: "Hello (in Galician)", sentence: 'Example: "Ola! Como estás?" (Hello! How are you?)' },
-    { word: "Cześć", meaning: "Hello (in Polish)", sentence: 'Example: "Cześć! Jak się masz?" (Hello! How are you?)' },
-    { word: "Halo", meaning: "Hello (in Indonesian)", sentence: 'Example: "Halo! Apa kabar?" (Hello! How are you?)' },
-    { word: "Sveiki", meaning: "Hello (in Latvian)", sentence: 'Example: "Sveiki! Kā tev iet?" (Hello! How are you?)' },
-    { word: "Holla", meaning: "Hello (in Spanish slang)", sentence: 'Example: "Holla! ¿Qué tal?" (Hello! How are you?)' },
-    { word: "Kamusta", meaning: "Hello (in Tagalog)", sentence: 'Example: "Kamusta! Ano ang balita?" (Hello! How are you?)' },
-    { word: "Pryvit", meaning: "Hello (in Ukrainian)", sentence: 'Example: "Pryvit! Yak spravy?" (Hello! How are you?)' },
-    { word: "Saluton", meaning: "Hello (in Esperanto)", sentence: 'Example: "Saluton! Kiel vi fartas?" (Hello! How are you?)' },
-    { word: "Hei", meaning: "Hello (in Norwegian)", sentence: 'Example: "Hei! Hvordan har du det?" (Hello! How are you?)' },
-    { word: "Tere", meaning: "Hello (in Estonian)", sentence: 'Example: "Tere! Kuidas sul läheb?" (Hello! How are you?)' },
-    { word: "Moi", meaning: "Hello (in Finnish)", sentence: 'Example: "Moi! Miten menee?" (Hello! How are you?)' },
-    { word: "Aloha", meaning: "Hello/Goodbye (in Hawaiian)", sentence: 'Example: "Aloha! Pehea oe?" (Hello! How are you?)' },
-    { word: "Hujambo", meaning: "Hello (in Swahili)", sentence: 'Example: "Hujambo! Habari gani?" (Hello! How are you?)' },
-    { word: "Yo", meaning: "Hello (in American slang)", sentence: 'Example: "Yo! What\'s up?" (Hello! What\'s up?)' },
-    { word: "Szia", meaning: "Hello (in Hungarian)", sentence: 'Example: "Szia! Hogy vagy?" (Hello! How are you?)' },
-    { word: "Yassou", meaning: "Hello (in Greek)", sentence: 'Example: "Yassou! Ti kaneis?" (Hello! How are you?)' },
-    { word: "Sannu", meaning: "Hello (in Hausa)", sentence: 'Example: "Sannu! Lafiya lau?" (Hello! How are you?)' },
-    { word: "Hail", meaning: "Hello (in Scottish)", sentence: 'Example: "Hail! How are ye?" (Hello! How are you?)' },
-    { word: "An-nyeong", meaning: "Hello (in Korean)", sentence: 'Example: "An-nyeong! Jal jinae?" (Hello! How are you?)' },
-    { word: "Nǐ hǎo", meaning: "Hello (in Mandarin Chinese)", sentence: 'Example: "Nǐ hǎo! Nǐ hǎo ma?" (Hello! How are you?)' },
-    { word: "G\'day", meaning: "Hello (in Australian English)", sentence: 'Example: "G\'day! How\'s it going?" (Hello! How\'s it going?)' },
-    { word: "Salve", meaning: "Hello (in Latin)", sentence: 'Example: "Salve! Quid agis?" (Hello! How are you?)' },
-    { word: "Effervescent", meaning: "Bubbling, sparkling (in Latin)", sentence: 'Example: "Her effervescent personality lit up the room."'},
-    { word: "Ephemeral", meaning: "Lasting for a very short time (in Greek)", sentence: 'Example: "The beauty of the sunset was ephemeral, vanishing as quickly as it arrived."'},
-    { word: "Serendipity", meaning: "A fortunate accident (in English)", sentence: 'Example: "Their meeting at the cafe was pure serendipity."'},
-    { word: "Ebullient", meaning: "Overflowing with enthusiasm or excitement (in Latin)", sentence: 'Example: "The ebullient crowd cheered as the team scored."'},
-    { word: "Quixotic", meaning: "Extremely idealistic, unrealistic (in Spanish)", sentence: 'Example: "His quixotic quest to change the world was admired by some, but impractical."'},
-    { word: "Zephyr", meaning: "A gentle breeze (in Greek)", sentence: 'Example: "A soft zephyr blew across the meadow, making the grass sway gently."'},
-    { word: "Limerence", meaning: "The state of being infatuated with someone (in English)", sentence: 'Example: "His limerence was so strong that he could not stop thinking about her."'},
-    { word: "Bucolic", meaning: "Relating to the pleasant aspects of the countryside (in Greek)", sentence: 'Example: "The bucolic setting of the farm made the visitors feel at peace."'},
-    { word: "Nefarious", meaning: "Wicked or criminal (in Latin)", sentence: 'Example: "The villain’s nefarious actions caused chaos throughout the city."'},
-    { word: "Cacophony", meaning: "A harsh, discordant mixture of sounds (in Greek)", sentence: 'Example: "The cacophony of car horns and shouting filled the streets."'},
-    { word: "Trepidation", meaning: "A feeling of fear or anxiety (in Latin)", sentence: 'Example: "He entered the haunted house with great trepidation."'},
-    { word: "Ineffable", meaning: "Too great or extreme to be described in words (in Latin)", sentence: 'Example: "The ineffable beauty of the landscape left everyone speechless."'},
-    { word: "Lugubrious", meaning: "Looking or sounding sad and dismal (in Latin)", sentence: 'Example: "His lugubrious expression made everyone feel sorrowful."'},
-    { word: "Effulgent", meaning: "Shining brightly (in Latin)", sentence: 'Example: "The effulgent stars lit up the night sky like diamonds."'},
-    { word: "Sycophant", meaning: "A person who seeks favor by flattering others (in Greek)", sentence: 'Example: "The sycophant tried to gain favor by constantly complimenting his boss."'},
-    { word: "Hapax", meaning: "A word or phrase used only once (in Greek)", sentence: 'Example: "The poem contained a hapax that intrigued many linguists."'},
-    { word: "Sonder", meaning: "The realization that each passerby has a life as vivid and complex as your own (in English)", sentence: 'Example: "He experienced a moment of sonder as he watched the crowd move by."'},
-    { word: "Mellifluous", meaning: "Sweet or musical; pleasant to hear (in Latin)", sentence: 'Example: "Her mellifluous voice calmed everyone in the room."'},
-    { word: "Sonorous", meaning: "Having a deep or full sound (in Latin)", sentence: 'Example: "The sonorous echoes of the church bell reverberated through the valley."'},
-    { word: "Lachrymose", meaning: "Tearful or given to weeping (in Latin)", sentence: 'Example: "The lachrymose farewell left everyone with tears in their eyes."'},
-    { word: "Ubiquitous", meaning: "Present, appearing, or found everywhere (in Latin)", sentence: 'Example: "Smartphones have become ubiquitous in modern society."'},
-    { word: "Recalcitrant", meaning: "Resisting authority or control (in Latin)", sentence: 'Example: "The recalcitrant student refused to follow the rules."'},
-    { word: "Peregrinate", meaning: "To travel or wander around (in Latin)", sentence: 'Example: "They decided to peregrinate across Europe during their summer vacation."'},
-    { word: "Obfuscate", meaning: "To confuse or obscure (in Latin)", sentence: 'Example: "The politician tried to obfuscate the issue with confusing statistics."'},
-    { word: "Surreptitious", meaning: "Kept secret, especially because it would not be approved of (in Latin)", sentence: 'Example: "They exchanged surreptitious glances during the meeting."'},
-    { word: "Panacea", meaning: "A universal remedy for all problems (in Greek)", sentence: 'Example: "Some people believe technology is a panacea for all modern problems."'},
-    { word: "Chiaroscuro", meaning: "The use of strong contrasts between light and dark (in Italian)", sentence: 'Example: "The artist’s painting featured dramatic chiaroscuro to highlight the emotions of the characters."'},
-    { word: "Cacophony", meaning: "A harsh, discordant mixture of sounds (in Greek)", sentence: 'Example: "The cacophony of the city made it difficult to concentrate."'},
-    { word: "Obsequious", meaning: "Excessively obedient or attentive (in Latin)", sentence: 'Example: "The obsequious assistant never disagreed with her boss."'},
-    { word: "Prosaic", meaning: "Commonplace or dull (in Latin)", sentence: 'Example: "The prosaic speech lacked any excitement or new ideas."'},
-    { word: "Recondite", meaning: "Little known or obscure (in Latin)", sentence: 'Example: "The recondite details of the ancient language fascinated the scholars."'},
-    { word: "Nostalgia", meaning: "A sentimental longing for the past (in Greek)", sentence: 'Example: "He felt a wave of nostalgia when he visited his childhood home."'},
-    { word: "Sublime", meaning: "Of such excellence or beauty as to inspire admiration or awe (in Latin)", sentence: 'Example: "The sublime view from the mountaintop left everyone speechless."'},
-    { word: "Vicarious", meaning: "Experienced through the feelings or actions of another (in Latin)", sentence: 'Example: "She lived vicariously through her friend’s exciting travels."'},
-    { word: "Lethologica", meaning: "The inability to remember a word or put your thoughts into words (in Greek)", sentence: 'Example: "He experienced a moment of lethologica and couldn’t recall her name."'},
-    { word: "Pernicious", meaning: "Causing great harm or damage (in Latin)", sentence: 'Example: "The pernicious effects of smoking were well-known."'},
-    { word: "Misanthrope", meaning: "A person who dislikes humankind (in Greek)", sentence: 'Example: "The misanthrope avoided social gatherings and preferred solitude."'},
-    { word: "Nadir", meaning: "The lowest point (in Arabic)", sentence: 'Example: "After the argument, he felt like he had reached his nadir."'},
-    { word: "Irascible", meaning: "Easily angered (in Latin)", sentence: 'Example: "His irascible nature made it difficult for him to work in teams."'},
-    { word: "Panache", meaning: "Flamboyant confidence of style or manner (in French)", sentence: 'Example: "He delivered the performance with great panache and style."'},
-    { word: "Camaraderie", meaning: "Mutual trust and friendship among people (in French)", sentence: 'Example: "The camaraderie between the team members was evident during the match."'},
-    { word: "Exuberant", meaning: "Full of energy, excitement, or cheerfulness (in Latin)", sentence: 'Example: "Her exuberant personality made her popular at every party."'},
-    { word: "Incandescent", meaning: "Emitting light as a result of being heated (in Latin)", sentence: 'Example: "The incandescent light bulb lit up the dark room."'},
-    { word: "Felicity", meaning: "Great happiness (in Latin)", sentence: 'Example: "The news of her promotion brought her immense felicity."'},
-    { word: "Recumbent", meaning: "Lying down, reclining (in Latin)", sentence: 'Example: "The recumbent figure on the sofa seemed lost in thought."'},
-    { word: "Elysian", meaning: "Relating to paradise or a place of ideal beauty (in Greek)", sentence: 'Example: "The Elysian landscape was breathtaking and serene."'}
-];
-            // Add more words..
+        // Word lists for different languages
+        const wordLists = {
+            english: [
+                { word: "Hello", meaning: "A greeting", sentence: "Example: 'Hello! How are you?'" },
+                { word: "Thank you", meaning: "Expression of gratitude", sentence: "Example: 'Thank you for your help.'" },
+    { word: "Hello", meaning: "A greeting", sentence: "Example: 'Hello! How are you?'" },
+    { word: "Thank you", meaning: "Expression of gratitude", sentence: "Example: 'Thank you for your help.'" },
+    { word: "Friend", meaning: "A companion", sentence: "Example: 'My friend is very kind.'" },
+    { word: "Love", meaning: "A deep affection", sentence: "Example: 'I love spending time with my family.'" },
+    { word: "Happiness", meaning: "A state of joy", sentence: "Example: 'Happiness is spending time with loved ones.'" },
+    { word: "Morning", meaning: "The early part of the day", sentence: "Example: 'Good morning!'" },
+    { word: "Apple", meaning: "A fruit", sentence: "Example: 'I ate an apple for breakfast.'" },
+    { word: "Beautiful", meaning: "Pleasing to the senses", sentence: "Example: 'The sunset is so beautiful.'" },
+    { word: "Kindness", meaning: "The quality of being kind", sentence: "Example: 'Kindness makes the world a better place.'" },
+    { word: "Learning", meaning: "The process of gaining knowledge", sentence: "Example: 'Learning new languages is fun.'" },
+    { word: "Courage", meaning: "The ability to face danger", sentence: "Example: 'It takes courage to try something new.'" },
+    { word: "Family", meaning: "A group of related people", sentence: "Example: 'I love spending time with my family.'" },
+    { word: "Dream", meaning: "Thoughts or images during sleep", sentence: "Example: 'I had a wonderful dream last night.'" },
+    { word: "Success", meaning: "The achievement of a goal", sentence: "Example: 'Hard work leads to success.'" },
+    { word: "Adventure", meaning: "An exciting experience", sentence: "Example: 'We went on an adventure in the mountains.'" },
+    { word: "Hope", meaning: "A feeling of expectation", sentence: "Example: 'I hope everything will be fine.'" },
+    { word: "Nature", meaning: "The physical world around us", sentence: "Example: 'Nature is full of beauty and wonder.'" },
+    { word: "Smile", meaning: "A facial expression of happiness", sentence: "Example: 'Her smile made my day brighter.'" },
+    { word: "Journey", meaning: "Travel from one place to another", sentence: "Example: 'The journey to the city was enjoyable.'" },
+    { word: "Knowledge", meaning: "Information and skills acquired", sentence: "Example: 'Knowledge is power.'" },
+    { word: "Compassion", meaning: "Sympathy for others", sentence: "Example: 'Compassion for others is essential in life.'" },
+    { word: "Grateful", meaning: "Feeling thankful", sentence: "Example: 'I am grateful for your support.'" },
+    { word: "Time", meaning: "A measurable period", sentence: "Example: 'Time is precious; use it wisely.'" },
+    { word: "Light", meaning: "The natural agent that makes things visible", sentence: "Example: 'Open the curtains to let in the light.'" },
+    { word: "Freedom", meaning: "The state of being free", sentence: "Example: 'Freedom is a basic human right.'" },
+    { word: "Energy", meaning: "The capacity to do work", sentence: "Example: 'Exercise gives you more energy.'" },
+    { word: "History", meaning: "The study of past events", sentence: "Example: 'History teaches us valuable lessons.'" },
+    { word: "Honesty", meaning: "The quality of being truthful", sentence: "Example: 'Honesty is always the best policy.'" },
+    { word: "Peace", meaning: "A state of tranquility", sentence: "Example: 'Meditation helps bring peace of mind.'" },
+    { word: "Friendship", meaning: "A close bond between people", sentence: "Example: 'Friendship is one of life’s greatest treasures.'" },
+    { word: "Music", meaning: "Vocal or instrumental sounds combined", sentence: "Example: 'Music has the power to heal the soul.'" },
+    { word: "Freedom", meaning: "The ability to act freely", sentence: "Example: 'Freedom is essential for creativity.'" },
+    { word: "Teacher", meaning: "A person who teaches others", sentence: "Example: 'My teacher inspires me to do my best.'" },
+    { word: "Honesty", meaning: "The act of being truthful", sentence: "Example: 'Honesty builds trust.'" },
+    { word: "Hunger", meaning: "A feeling of needing food", sentence: "Example: 'I felt hunger after skipping lunch.'" },
+    { word: "Imagination", meaning: "The ability to form ideas", sentence: "Example: 'Children have vivid imaginations.'" },
+    { word: "Leadership", meaning: "The ability to lead", sentence: "Example: 'Leadership requires courage and confidence.'" },
+    { word: "Respect", meaning: "Admiration for someone or something", sentence: "Example: 'Respect is earned through actions.'" },
+    { word: "Wisdom", meaning: "The quality of being wise", sentence: "Example: 'Wisdom comes with experience.'" },
+    { word: "Confidence", meaning: "Belief in oneself", sentence: "Example: 'Confidence is key to success.'" },
+    { word: "Hobby", meaning: "An activity done for enjoyment", sentence: "Example: 'Reading is my favorite hobby.'" },
+    { word: "Future", meaning: "The time yet to come", sentence: "Example: 'The future is full of possibilities.'" },
+    { word: "Victory", meaning: "An act of defeating an opponent", sentence: "Example: 'The team celebrated their victory.'" },
+    { word: "Dream", meaning: "A series of thoughts during sleep", sentence: "Example: 'I had a strange dream last night.'" },
+    { word: "Travel", meaning: "To go from one place to another", sentence: "Example: 'I love to travel and explore new places.'" },
+    { word: "Mountain", meaning: "A large natural elevation", sentence: "Example: 'The mountain was covered in snow.'" },
+    { word: "Ocean", meaning: "A large body of saltwater", sentence: "Example: 'The ocean waves were calming.'" },
+    { word: "Flower", meaning: "The bloom of a plant", sentence: "Example: 'The garden was full of colorful flowers.'" },
+    { word: "Family", meaning: "A group of related people", sentence: "Example: 'Family is everything to me.'" },
+    { word: "Success", meaning: "Achieving a goal", sentence: "Example: 'Success requires effort and determination.'" },
+    { word: "Strength", meaning: "The quality of being strong", sentence: "Example: 'Her strength helped her overcome challenges.'" },
+    { word: "Happiness", meaning: "A feeling of joy", sentence: "Example: 'Happiness is found in small things.'" }
+    // Add more words as needed up to 100+
+        ],
+            french: [
+                { word: "Bonjour", meaning: "Good morning", sentence: "Example: 'Bonjour! Comment ça va?'" },
+                { word: "Merci", meaning: "Thank you", sentence: "Example: 'Merci pour votre aide.'" },
+    { word: "Bonjour", meaning: "Good morning", sentence: "Example: 'Bonjour! Comment ça va?'" },
+    { word: "Merci", meaning: "Thank you", sentence: "Example: 'Merci pour votre aide.'" },
+    { word: "Amour", meaning: "Love", sentence: "Example: 'L'amour est beau.'" },
+    { word: "Amitié", meaning: "Friendship", sentence: "Example: 'L'amitié est importante dans la vie.'" },
+    { word: "Famille", meaning: "Family", sentence: "Example: 'Ma famille est très grande.'" },
+    { word: "Maison", meaning: "House", sentence: "Example: 'J'habite dans une maison blanche.'" },
+    { word: "École", meaning: "School", sentence: "Example: 'L'école commence à huit heures.'" },
+    { word: "Travail", meaning: "Work", sentence: "Example: 'J'ai beaucoup de travail aujourd'hui.'" },
+    { word: "Cœur", meaning: "Heart", sentence: "Example: 'Écoute les battements de ton cœur.'" },
+    { word: "Livre", meaning: "Book", sentence: "Example: 'Je lis un livre intéressant.'" },
+    { word: "Soleil", meaning: "Sun", sentence: "Example: 'Le soleil brille aujourd'hui.'" },
+    { word: "Étoile", meaning: "Star", sentence: "Example: 'Les étoiles sont magnifiques cette nuit.'" },
+    { word: "Eau", meaning: "Water", sentence: "Example: 'Il faut boire beaucoup d'eau.'" },
+    { word: "Terre", meaning: "Earth", sentence: "Example: 'La Terre est notre maison commune.'" },
+    { word: "Montagne", meaning: "Mountain", sentence: "Example: 'La montagne est couverte de neige.'" },
+    { word: "Mer", meaning: "Sea", sentence: "Example: 'La mer est calme aujourd'hui.'" },
+    { word: "Ciel", meaning: "Sky", sentence: "Example: 'Le ciel est bleu clair.'" },
+    { word: "Lumière", meaning: "Light", sentence: "Example: 'Allume la lumière, s'il te plaît.'" },
+    { word: "Fleur", meaning: "Flower", sentence: "Example: 'Les fleurs dans le jardin sont belles.'" },
+    { word: "Enfant", meaning: "Child", sentence: "Example: 'Les enfants jouent dans le parc.'" },
+    { word: "Temps", meaning: "Time", sentence: "Example: 'Le temps passe vite.'" },
+    { word: "Vie", meaning: "Life", sentence: "Example: 'La vie est pleine de surprises.'" },
+    { word: "Chanson", meaning: "Song", sentence: "Example: 'Cette chanson est très populaire.'" },
+    { word: "Ville", meaning: "City", sentence: "Example: 'Je vis dans une grande ville.'" },
+    { word: "Plage", meaning: "Beach", sentence: "Example: 'La plage est pleine de touristes.'" },
+    { word: "Chien", meaning: "Dog", sentence: "Example: 'Mon chien est très joueur.'" },
+    { word: "Chat", meaning: "Cat", sentence: "Example: 'Le chat dort sur le canapé.'" },
+    { word: "Nourriture", meaning: "Food", sentence: "Example: 'La nourriture française est délicieuse.'" },
+    { word: "Musique", meaning: "Music", sentence: "Example: 'J'adore écouter de la musique classique.'" },
+    { word: "Voiture", meaning: "Car", sentence: "Example: 'J'ai acheté une nouvelle voiture.'" },
+    { word: "Fête", meaning: "Party", sentence: "Example: 'La fête était très amusante.'" },
+    { word: "Paix", meaning: "Peace", sentence: "Example: 'Nous souhaitons tous la paix dans le monde.'" },
+    { word: "Gentillesse", meaning: "Kindness", sentence: "Example: 'La gentillesse est une qualité précieuse.'" },
+    { word: "Rire", meaning: "Laughter", sentence: "Example: 'Le rire est bon pour la santé.'" },
+    { word: "Force", meaning: "Strength", sentence: "Example: 'La force mentale est essentielle.'" },
+    { word: "Espoir", meaning: "Hope", sentence: "Example: 'Il y a toujours de l'espoir.'" },
+    { word: "Rêve", meaning: "Dream", sentence: "Example: 'Mon rêve est de visiter Paris.'" },
+    { word: "Futur", meaning: "Future", sentence: "Example: 'Le futur est plein de possibilités.'" },
+    { word: "Mémoire", meaning: "Memory", sentence: "Example: 'Les souvenirs d'enfance sont précieux.'" },
+    { word: "Fille", meaning: "Girl", sentence: "Example: 'La fille joue avec sa poupée.'" },
+    { word: "Père", meaning: "Father", sentence: "Example: 'Mon père est mon héros.'" },
+    { word: "Mère", meaning: "Mother", sentence: "Example: 'Ma mère cuisine très bien.'" },
+    { word: "Frère", meaning: "Brother", sentence: "Example: 'Mon frère est très drôle.'" },
+    { word: "Sœur", meaning: "Sister", sentence: "Example: 'Ma sœur est très intelligente.'" },
+    { word: "Village", meaning: "Village", sentence: "Example: 'Le village est petit mais charmant.'" },
+    { word: "Route", meaning: "Road", sentence: "Example: 'Nous avons conduit sur une route étroite.'" },
+    { word: "Écouter", meaning: "To listen", sentence: "Example: 'J'aime écouter de la musique le soir.'" },
+    { word: "Parler", meaning: "To talk", sentence: "Example: 'Nous aimons parler de nos projets.'" },
+    { word: "Lire", meaning: "To read", sentence: "Example: 'Je lis un livre chaque semaine.'" },
+    { word: "Écrire", meaning: "To write", sentence: "Example: 'J'aime écrire des poèmes.'" },
+    { word: "Dormir", meaning: "To sleep", sentence: "Example: 'Dormir suffisamment est important pour la santé.'" },
+    { word: "Courir", meaning: "To run", sentence: "Example: 'Je cours dans le parc chaque matin.'" },
+    { word: "Danser", meaning: "To dance", sentence: "Example: 'J'adore danser aux fêtes.'" },
+    { word: "Chanter", meaning: "To sing", sentence: "Example: 'Elle chante très bien.'" },
+    { word: "Voyager", meaning: "To travel", sentence: "Example: 'Je veux voyager en France un jour.'" },
+    { word: "Ouvrir", meaning: "To open", sentence: "Example: 'J'ai ouvert la fenêtre pour laisser entrer l'air frais.'" },
+    { word: "Fermer", meaning: "To close", sentence: "Example: 'Ferme la porte, s'il te plaît.'" },
+    { word: "Voir", meaning: "To see", sentence: "Example: 'Je peux voir les montagnes d'ici.'" },
+    { word: "Entendre", meaning: "To hear", sentence: "Example: 'Je peux entendre le chant des oiseaux.'" },
+    { word: "Cuisiner", meaning: "To cook", sentence: "Example: 'J'aime cuisiner pour ma famille.'" },
+    { word: "Manger", meaning: "To eat", sentence: "Example: 'Je vais manger une salade.'" },
+    { word: "Boire", meaning: "To drink", sentence: "Example: 'J'aime boire du thé chaud.'" },
+    // Add more words as needed up to 100+
+],
+            spanish: [
+                { word: "Hola", meaning: "Hello", sentence: "Example: '¡Hola! ¿Cómo estás?'" },
+                { word: "Gracias", meaning: "Thank you", sentence: "Example: 'Gracias por tu ayuda.'" },
+    { word: "Hola", meaning: "Hello", sentence: "Example: '¡Hola! ¿Cómo estás?'" },
+    { word: "Gracias", meaning: "Thank you", sentence: "Example: 'Gracias por tu ayuda.'" },
+    { word: "Amor", meaning: "Love", sentence: "Example: 'El amor es muy importante en la vida.'" },
+    { word: "Familia", meaning: "Family", sentence: "Example: 'Mi familia es muy unida.'" },
+    { word: "Amigo", meaning: "Friend", sentence: "Example: 'Mi amigo siempre me apoya.'" },
+    { word: "Felicidad", meaning: "Happiness", sentence: "Example: 'La felicidad es la clave de la vida.'" },
+    { word: "Casa", meaning: "House", sentence: "Example: 'Vivo en una casa grande.'" },
+    { word: "Escuela", meaning: "School", sentence: "Example: 'La escuela comienza a las ocho.'" },
+    { word: "Trabajo", meaning: "Work", sentence: "Example: 'Tengo mucho trabajo hoy.'" },
+    { word: "Corazón", meaning: "Heart", sentence: "Example: 'Escuché los latidos de mi corazón.'" },
+    { word: "Maestro", meaning: "Teacher", sentence: "Example: 'El maestro es muy amable.'" },
+    { word: "Libro", meaning: "Book", sentence: "Example: 'Estoy leyendo un libro interesante.'" },
+    { word: "Amistad", meaning: "Friendship", sentence: "Example: 'La amistad verdadera es valiosa.'" },
+    { word: "Sol", meaning: "Sun", sentence: "Example: 'El sol está brillando hoy.'" },
+    { word: "Estrella", meaning: "Star", sentence: "Example: 'Las estrellas son hermosas esta noche.'" },
+    { word: "Agua", meaning: "Water", sentence: "Example: 'Es importante beber mucha agua.'" },
+    { word: "Tierra", meaning: "Earth", sentence: "Example: 'La tierra está llena de vida.'" },
+    { word: "Montaña", meaning: "Mountain", sentence: "Example: 'Subimos la montaña ayer.'" },
+    { word: "Mar", meaning: "Sea", sentence: "Example: 'El mar es muy tranquilo hoy.'" },
+    { word: "Cielo", meaning: "Sky", sentence: "Example: 'El cielo es azul claro.'" },
+    { word: "Luz", meaning: "Light", sentence: "Example: 'Apaga la luz antes de dormir.'" },
+    { word: "Flor", meaning: "Flower", sentence: "Example: 'La flor tiene un aroma dulce.'" },
+    { word: "Niño", meaning: "Child", sentence: "Example: 'El niño está jugando en el parque.'" },
+    { word: "Tiempo", meaning: "Time", sentence: "Example: 'El tiempo vuela cuando te diviertes.'" },
+    { word: "Vida", meaning: "Life", sentence: "Example: 'La vida es un regalo precioso.'" },
+    { word: "Canción", meaning: "Song", sentence: "Example: 'Esta canción es mi favorita.'" },
+    { word: "Ciudad", meaning: "City", sentence: "Example: 'Vivo en una ciudad grande.'" },
+    { word: "Playa", meaning: "Beach", sentence: "Example: 'Fuimos a la playa el fin de semana.'" },
+    { word: "Perro", meaning: "Dog", sentence: "Example: 'Mi perro es muy juguetón.'" },
+    { word: "Gato", meaning: "Cat", sentence: "Example: 'El gato duerme en el sofá.'" },
+    { word: "Comida", meaning: "Food", sentence: "Example: 'La comida mexicana es deliciosa.'" },
+    { word: "Música", meaning: "Music", sentence: "Example: 'Me encanta escuchar música clásica.'" },
+    { word: "Coche", meaning: "Car", sentence: "Example: 'Compré un coche nuevo ayer.'" },
+    { word: "Fiesta", meaning: "Party", sentence: "Example: 'La fiesta fue muy divertida.'" },
+    { word: "Paz", meaning: "Peace", sentence: "Example: 'Todos deseamos paz en el mundo.'" },
+    { word: "Amable", meaning: "Kind", sentence: "Example: 'Es importante ser amable con los demás.'" },
+    { word: "Risa", meaning: "Laughter", sentence: "Example: 'La risa es la mejor medicina.'" },
+    { word: "Fuerza", meaning: "Strength", sentence: "Example: 'La fuerza mental es crucial en la vida.'" },
+    { word: "Esperanza", meaning: "Hope", sentence: "Example: 'Siempre hay esperanza en los momentos difíciles.'" },
+    { word: "Sueño", meaning: "Dream", sentence: "Example: 'Mi sueño es viajar por el mundo.'" },
+    { word: "Amor", meaning: "Love", sentence: "Example: 'El amor puede cambiar el mundo.'" },
+    { word: "Futuro", meaning: "Future", sentence: "Example: 'El futuro está lleno de oportunidades.'" },
+    { word: "Recuerdo", meaning: "Memory", sentence: "Example: 'Tengo buenos recuerdos de mi infancia.'" },
+    { word: "Niña", meaning: "Girl", sentence: "Example: 'La niña está jugando con su muñeca.'" },
+    { word: "Padre", meaning: "Father", sentence: "Example: 'Mi padre es mi modelo a seguir.'" },
+    { word: "Madre", meaning: "Mother", sentence: "Example: 'Mi madre cocina muy bien.'" },
+    { word: "Hermano", meaning: "Brother", sentence: "Example: 'Mi hermano es muy divertido.'" },
+    { word: "Hermana", meaning: "Sister", sentence: "Example: 'Mi hermana es muy inteligente.'" },
+    { word: "Pueblo", meaning: "Town", sentence: "Example: 'El pueblo es pequeño pero bonito.'" },
+    { word: "Carretera", meaning: "Road", sentence: "Example: 'Condujimos por una carretera estrecha.'" },
+    { word: "Escuchar", meaning: "To listen", sentence: "Example: 'Me gusta escuchar música por la noche.'" },
+    { word: "Hablar", meaning: "To talk", sentence: "Example: 'Nos gusta hablar de nuestros planes.'" },
+    { word: "Leer", meaning: "To read", sentence: "Example: 'Leo un libro cada semana.'" },
+    { word: "Escribir", meaning: "To write", sentence: "Example: 'Me gusta escribir poemas.'" },
+    { word: "Dormir", meaning: "To sleep", sentence: "Example: 'Dormir bien es importante para la salud.'" },
+    { word: "Correr", meaning: "To run", sentence: "Example: 'Corro en el parque cada mañana.'" },
+    { word: "Bailar", meaning: "To dance", sentence: "Example: 'Me encanta bailar en las fiestas.'" },
+    { word: "Cantar", meaning: "To sing", sentence: "Example: 'Ella canta muy bien.'" },
+    { word: "Viajar", meaning: "To travel", sentence: "Example: 'Quiero viajar a España algún día.'" },
+    { word: "Abrir", meaning: "To open", sentence: "Example: 'Abrí la ventana para que entrara aire fresco.'" },
+    { word: "Cerrar", meaning: "To close", sentence: "Example: 'Por favor, cierra la puerta.'" },
+    { word: "Ver", meaning: "To see", sentence: "Example: 'Puedo ver las montañas desde aquí.'" },
+    { word: "Oír", meaning: "To hear", sentence: "Example: 'Puedo oír el canto de los pájaros.'" },
+    { word: "Cocinar", meaning: "To cook", sentence: "Example: 'Me gusta cocinar para mi familia.'" },
+    { word: "Comer", meaning: "To eat", sentence: "Example: 'Voy a comer una ensalada.'" },
+    { word: "Beber", meaning: "To drink", sentence: "Example: 'Me gusta beber té caliente.'" },
+    // Add more words as needed up to 100+
+],
+        };
 
-        // Function to select a random word and update the page
+        // Load the selected language from localStorage or default to English
+        let selectedLanguage = localStorage.getItem("language") || "english";
+        let words = wordLists[selectedLanguage];
+
+        // Display a random word
         function newWord() {
             const randomIndex = Math.floor(Math.random() * words.length);
             const randomWord = words[randomIndex];
-
             document.getElementById("word").textContent = randomWord.word;
             document.getElementById("meaning").textContent = randomWord.meaning;
             document.getElementById("sentence").textContent = randomWord.sentence;
         }
 
-        // Redirect to Login Page
-        function backToLogin() {
+        // Change the language
+        function changeLanguage() {
+            const newLanguage = prompt("Choose a language: English, French, Spanish").toLowerCase();
+            if (wordLists[newLanguage]) {
+                selectedLanguage = newLanguage;
+                localStorage.setItem("language", newLanguage);
+                words = wordLists[newLanguage];
+                alert(`Language changed to ${newLanguage}.`);
+                newWord(); // Display a word in the new language
+            } else {
+                alert("Invalid language choice.");
+            }
+        }
+
+        // Logout function
+        function logout() {
             localStorage.clear(); // Clear user data
             window.location.href = "index.html"; // Redirect to login
         }
 
-        // On page load
-        window.onload = function() {
-            const userName = localStorage.getItem('name');
-            if (userName) {
-                document.getElementById('welcome-message').textContent = `Word of the Day, ${userName}!`;
-            } else {
-                window.location.href = "index.html"; // Redirect to login if no user data
-            }
-            newWord(); // Display an initial word
+        // On page load, show the welcome message and a word
+        window.onload = function () {
+            const userName = localStorage.getItem("name") || "User";
+            document.getElementById("welcome-message").textContent = `Welcome, ${userName}!`;
+            newWord(); // Show an initial word
         };
-        <nav class="navbar">
-    <div class="navbar-container">
-        <h1 class="navbar-title">Word of the Day</h1>
-        <ul class="navbar-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#" onclick="backToLogin()">Logout</a></li>
-        </ul>
-    </div>
-</nav>
-
     </script>
 </body>
 </html>
-
-            

@@ -1,3 +1,26 @@
+
+/* Navigation Bar Links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Adds spacing between links */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px; /* Adds padding inside the links for better spacing */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
 /* Navigation Bar */
 .navbar {
     background-color: #007BFF; /* Blue background */
