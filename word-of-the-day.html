@@ -7,21 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 id="welcome-message">Word of the Day</h1>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="navbar-title">Word of the Day</h1>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#" onclick="backToLogin()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <!-- Word of the Day section -->
+    <div class="container">
+        <h1 id="welcome-message" class="welcome-title">Word of the Day</h1>
+
+        <!-- Word of the Day Section -->
         <div class="word-of-the-day">
-            <h2 id="word">Bonjour</h2> <!-- Placeholder for word -->
-            <p id="meaning">Good morning (in French)</p> <!-- Placeholder for meaning -->
-            <p id="sentence">Example: "Bonjour! Comment ça va?" (Good morning! How are you?)</p> <!-- Placeholder for sentence -->
-            <button onclick="newWord()">Get New Word</button> <!-- Button to get a new word -->
+            <h2 id="word" class="word-title">Bonjour</h2>
+            <p id="meaning" class="word-meaning">Good morning (in French)</p>
+            <p id="sentence" class="word-sentence">Example: "Bonjour! Comment ça va?" (Good morning! How are you?)</p>
+            <button onclick="newWord()" class="new-word-button">Get New Word</button>
         </div>
     </div>
 
     <script>
-        // List of words with their meanings and example sentences
+        // Word List
         const words = [
+            { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
+            { word: "Hola", meaning: "Hello (in Spanish)", sentence: 'Example: "¡Hola! ¿Cómo estás?" (Hello! How are you?)' },
             { word: "Bonjour", meaning: "Good morning (in French)", sentence: 'Example: "Bonjour! Comment ça va?" (Good morning! How are you?)' },
             { word: "Hola", meaning: "Hello (in Spanish)", sentence: 'Example: "¡Hola! ¿Cómo estás?" (Hello! How are you?)' },
             { word: "Ciao", meaning: "Hello/Goodbye (in Italian)", sentence: 'Example: "Ciao! Come stai?" (Hello! How are you?)' },
@@ -117,32 +131,48 @@
     { word: "Felicity", meaning: "Great happiness (in Latin)", sentence: 'Example: "The news of her promotion brought her immense felicity."'},
     { word: "Recumbent", meaning: "Lying down, reclining (in Latin)", sentence: 'Example: "The recumbent figure on the sofa seemed lost in thought."'},
     { word: "Elysian", meaning: "Relating to paradise or a place of ideal beauty (in Greek)", sentence: 'Example: "The Elysian landscape was breathtaking and serene."'}
-];// Add more words here up to 50 words as per your needs
+];
+            // Add more words..
 
         // Function to select a random word and update the page
         function newWord() {
-            // Get a random index from the words array
             const randomIndex = Math.floor(Math.random() * words.length);
-
-            // Get the random word and its details
             const randomWord = words[randomIndex];
 
-            // Update the page with the new word, meaning, and example sentence
             document.getElementById("word").textContent = randomWord.word;
             document.getElementById("meaning").textContent = randomWord.meaning;
             document.getElementById("sentence").textContent = randomWord.sentence;
         }
 
-        // Display user's name from localStorage and call the newWord function
+        // Redirect to Login Page
+        function backToLogin() {
+            localStorage.clear(); // Clear user data
+            window.location.href = "index.html"; // Redirect to login
+        }
+
+        // On page load
         window.onload = function() {
             const userName = localStorage.getItem('name');
             if (userName) {
                 document.getElementById('welcome-message').textContent = `Word of the Day, ${userName}!`;
             } else {
-                window.location.href = "index.html"; // Redirect to login if no user is found
+                window.location.href = "index.html"; // Redirect to login if no user data
             }
-            newWord(); // Call the function to display an initial word
+            newWord(); // Display an initial word
         };
+        <nav class="navbar">
+    <div class="navbar-container">
+        <h1 class="navbar-title">Word of the Day</h1>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#" onclick="backToLogin()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
     </script>
 </body>
 </html>
+
+            

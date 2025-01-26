@@ -1,3 +1,60 @@
+/* Navigation Bar */
+.navbar {
+    background-color: #007BFF; /* Blue background */
+    padding: 10px 40px; /* Add more padding to prevent items from touching the edges */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Ensures items are displayed in a row */
+    justify-content: space-between; /* Align left and right content */
+    align-items: center; /* Vertically center items */
+}
+
+/* Navigation Bar Container */
+.navbar-container {
+    max-width: 1200px; /* Center-align the content */
+    width: 100%;
+    margin: 0 auto; /* Centers the navbar content horizontally */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar Title */
+.navbar-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+/* Navbar Links */
+.navbar-links {
+    list-style: none; /* Removes bullet points */
+    display: flex;
+    gap: 20px; /* Adds spacing between the links */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    display: inline; /* Keeps links in a horizontal line */
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px; /* Adds padding inside the links for better spacing */
+    border-radius: 5px; /* Adds rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
 /* General body styling */
 body {
     font-family: Arial, sans-serif;
@@ -23,6 +80,7 @@ body {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+margin-top:50px;
 }
 
 /* Styling for the login form */
