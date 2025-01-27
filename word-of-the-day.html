@@ -14,6 +14,7 @@
             <ul class="navbar-links">
                 <li><a href="#" onclick="Home()">Home</a></li>
                 <li><a href="#" onclick="changeLanguage()">Language</a></li>
+                <li><a href="#" onclick="About()">About</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </div>
@@ -294,7 +295,7 @@ tamil: [
 
         // Change the language
         function changeLanguage() {
-            const newLanguage = prompt("Choose a language: English, French, Spanish, Tamil").toLowerCase();
+            const newLanguage = prompt("Choose a language: Tamil, English, French, Spanish,").toLowerCase();
             if (wordLists[newLanguage]) {
                 selectedLanguage = newLanguage;
                 localStorage.setItem("language", newLanguage);
