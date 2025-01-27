@@ -260,7 +260,7 @@ body {
 
 .about-section h1,
 .about-section h2 {
-    color: #781717;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
@@ -364,7 +364,7 @@ body {
 /* Contact Section Styling */
 .contact-section {
     width: 100%; /* Full width */
-    background-color: #000; /* Black background */
+    /* Black background */
     color: #fff; /* White text */
     padding: 40px 20px; /* Spacing inside the section */
     text-align: center; /* Center the text */
@@ -395,7 +395,7 @@ body {
 }
 
 .contact-section a {
-    color: #00aaff; /* Blue for links */
+    color: #24126b; /* Blue for links */
     text-decoration: none;
 }
 
@@ -410,3 +410,62 @@ footer.contact-section {
     right: 0;
 }
 
+/* About Section Styling (No Boxed Background) */
+.about-section {
+    max-width: 800px;
+    margin: 0 auto;  /* Center align the About section */
+    padding: 20px;
+    line-height: 1.6;
+    text-align: left;  /* Align text to the left (you can change this if you prefer center text) */
+    background: none;  /* Ensure no background or box */
+}
+
+/* Contact Section Styling */
+.contact-section {
+    width: 100%; /* Full width */
+     /* Keep the black background */
+    color: #fff; /* White text */
+    padding: 40px 20px; /* Spacing inside the section */
+    text-align: center; /* Center the text */
+    border-top: 2px solid #333; /* Optional: Top border */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+/* For the Contact Section, keep the content aligned centrally */
+.contact-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-section ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.contact-section a {
+    color: #f6ff00; /* Blue for links */
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure Footer Stays Full Width */
+footer.contact-section {
+    position: relative;
+    left: 0;
+    right: 0;
+}
