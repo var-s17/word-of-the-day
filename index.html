@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Word of the Day</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <!-- Navigation Bar -->
-    
     <nav class="navbar">
         <div class="navbar-container">
             <h1 class="navbar-title">The Word Explorer</h1>
             <ul class="navbar-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="word-of-the-day.html">Language</a></li>
+                <li><a href ="quiz.html">Quiz</a></li>
                 <li><a href="about.html ">About</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </div>
     </nav>
     
+
     <!-- Welcome Section -->
     <div class="container" id="welcome-container">
         <h1>Start Your Word Journey Here!</h1>
@@ -47,7 +46,6 @@
     </div>
 
     <script>
-<<<<<<< HEAD
         // Check if the user is already logged in
         const userName = localStorage.getItem("name");
         const userEmail = localStorage.getItem("email");
@@ -65,33 +63,18 @@
                 window.location.href = "word-of-the-day.html";
             } else {
                 // If user is not logged in, show the login form
-=======
-        function handleGetStarted() {
-            const userName = localStorage.getItem("name");
-            const userEmail = localStorage.getItem("email");
-
-            if (userName && userEmail) {
-                window.location.href = "word-of-the-day.html";
-            } else {
->>>>>>> f9873c2 (Updated site)
                 document.getElementById("welcome-container").style.display = "none";
                 document.getElementById("login-container").style.display = "block";
             }
         }
 
-<<<<<<< HEAD
         // Handle login form submission
         document.getElementById("login-form").addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent form submission
-=======
-        document.getElementById("login-form").addEventListener("submit", function (event) {
-            event.preventDefault();
->>>>>>> f9873c2 (Updated site)
 
             const username = document.getElementById("username").value.trim();
             const email = document.getElementById("email").value.trim();
 
-<<<<<<< HEAD
             if (username && email) {
                 // Save user data to localStorage
                 localStorage.setItem("name", username);
@@ -109,35 +92,7 @@
             localStorage.clear(); // Clear user data
             window.location.href = "index.html"; // Reload the home page
         }
-=======
-            if (username === "" || email === "") {
-                alert("Please fill out both fields!");
-                document.getElementById("username").value = "";
-                document.getElementById("email").value = "";
-                return;
-            }
-
-            localStorage.setItem("name", username);
-            localStorage.setItem("email", email);
-            window.location.href = "word-of-the-day.html";
-        });
-
-        function logout() {
-            localStorage.clear();
-            document.getElementById("welcome-container").style.display = "block";
-            document.getElementById("login-container").style.display = "none";
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const userName = localStorage.getItem("name");
-            const userEmail = localStorage.getItem("email");
-
-            if (userName && userEmail) {
-                document.getElementById("welcome-container").style.display = "block";
-                document.getElementById("login-container").style.display = "none";
-            }
-        });
->>>>>>> f9873c2 (Updated site)
     </script>
 </body>
 </html>
+

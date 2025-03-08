@@ -1,6 +1,97 @@
+/* Navigation Bar Links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Adds spacing between links */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px; /* Adds padding inside the links for better spacing */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #007BFF; /* Blue background */
+    padding: 10px 40px; /* Add more padding to prevent items from touching the edges */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Ensures items are displayed in a row */
+    justify-content: space-between; /* Align left and right content */
+    align-items: center; /* Vertically center items */
+}
+
+/* Navigation Bar Container */
+.navbar-container {
+    max-width: 1200px; /* Center-align the content */
+    width: 100%;
+    margin: 0 auto; /* Centers the navbar content horizontally */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar Title */
+.navbar-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;
+}
+
+/* Navbar Links */
+.navbar-links {
+    list-style: none; /* Removes bullet points */
+    display: flex;
+    gap: 10px; /* Adds spacing between the links */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    display: inline; /* Keeps links in a horizontal line */
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px; /* Adds padding inside the links for better spacing */
+    border-radius: 5px; /* Adds rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #007BFF; /* Blue background */
+    background-image: url('https://example.com/your-image.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
+    height: 100vh;            /* Full viewport height */
     text-align: center;
 }
 
@@ -63,3 +154,258 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+/* Word of the day section */
+.word-of-the-day {
+    margin-top: 30px;
+}
+
+.word-of-the-day h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.word-of-the-day p {
+    font-size: 1.2em;
+}
+
+.word-of-the-day button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.word-of-the-day button:hover {
+    background-color: #22d859;
+}
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #007BFF; /* Blue background */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Sticks to the top */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: #0056b3; /* Darker blue */
+    border-radius: 4px;
+}
+
+/* Main Content Wrapper */
+.main-content {
+    margin-top: 80px; /* Add space for fixed navbar */
+    padding: 20px;
+    flex: 1; /* Ensures it takes up remaining space */
+    overflow-y: auto; /* Enables scrolling for content */
+}
+
+/* About Section Styling */
+.about-section {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-section h1,
+.about-section h2 {
+    color: #781717;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.about-section ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #007BFF; /* Blue background */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Sticks to the top */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: #0056b3; /* Darker blue */
+    border-radius: 4px;
+}
+
+/* Main Content Styling */
+.main-content {
+    margin-top: 80px; /* Add space for the fixed navbar */
+    padding: 20px;
+    overflow-y: auto; /* Allow scrolling */
+}
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Content Styling */
+.main-content {
+    margin-top: 80px; /* Add space for fixed navbar */
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling for the content */
+}
+
+/* About Section Styling */
+.about-section {
+    max-width: 800px;
+    margin: 0 auto; /* Center align the About section */
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Contact Section Styling */
+.contact-section {
+    width: 100%; /* Full width */
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 40px 20px; /* Spacing inside the section */
+    text-align: center; /* Center the text */
+    border-top: 2px solid #333; /* Add a top border */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+.contact-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-section ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.contact-section a {
+    color: #00aaff; /* Blue for links */
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure Footer Stays Full Width */
+footer.contact-section {
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
