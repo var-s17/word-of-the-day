@@ -80,7 +80,10 @@ window.onload = function () {
         window.location.href = "index.html"; // Redirect to login if no user data
     }
     newWord(); // Display an initial word
+
 };
+
+
 const wordLists = {
     english: englishWords,  // English words
     french: frenchWords,    // French words

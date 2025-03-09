@@ -46,6 +46,7 @@
 
 /* Navbar Title */
 .navbar-title {
+    margin-left: 100%;
     font-size: 1.5em;
     font-weight: bold;
     color: white;
@@ -206,19 +207,17 @@ body {
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    padding: 10px 20px; /* 🔹 Left & Right spacing increase */
 }
 
 .navbar-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 0;
+    margin-left: 10px; /* 🔹 Left side spacing */
 }
+
 
 .navbar-links {
     list-style: none;
@@ -409,3 +408,35 @@ footer.contact-section {
     right: 0;
 }
 
+/* Language Selection Section - Proper Spacing */
+#languageSelection {
+    text-align: center;
+    padding: 20px;
+}
+#languageSelect {
+    width: 100%; /* Full width inside container */
+    max-width: 220px; /* Reduce max width */
+    padding: 8px; /* Comfortable padding */
+    font-size: 16px; /* Readable text size */
+    margin-bottom: 15px; /* Space below dropdown */
+}
+
+#startQuizBtn {
+    display: block;
+    width: 100%;
+    max-width: 300px; /* Match dropdown width */
+    padding: 10px;
+    font-size: 18px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin: 10px auto; /* 🔹 Center-align button */
+}
+
+#startQuizBtn:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+}
