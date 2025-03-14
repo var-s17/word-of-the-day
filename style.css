@@ -142,7 +142,7 @@ margin-top:50px;
 
 /* Submit button */
 button {
-    background-color:#071422;;
+    background-color:#071422;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -153,7 +153,7 @@ button {
 }
 
 button:hover {
-    background-color: #1f69ea;
+    background-color: #002955;
 }
 
 /* Word of the day section */
@@ -181,7 +181,7 @@ button:hover {
 }
 
 .word-of-the-day button:hover {
-    background-color: #1f69ea
+    background-color:#002955;
 }
 /* General Body Styling */
 body {
