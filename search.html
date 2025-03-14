@@ -144,6 +144,12 @@
                 resultDiv.style.display = "none";
             }
         }
+        
+        // Logout function
+        function logout() {
+            localStorage.clear(); // Clear user data
+            window.location.href = "index.html"; // Reload the home page
+        }
     </script>
 </body>
 </html>

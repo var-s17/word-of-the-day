@@ -102,3 +102,46 @@ function changeLanguage() {
         alert("Invalid language choice.");
     }
 }
+document.addEventListener("DOMContentLoaded", function () {
+    loadWordOfTheDay();
+    loadBookmarks();
+});
+
+let bookmarks = JSON.parse(localStorage.getItem("bookmarkedWords")) || [];
+
+async function loadWordOfTheDay() {
+    try {
+        let response = await fetch("tamil_words.json");
+        let data = await response.json();
+        
+        let randomIndex = Math.floor(Math.random() * data.length);
+        let wordData = data[randomIndex];
+
+        document.getElementById("word-of-day").innerHTML = `<strong>${wordData.word}</strong>: ${wordData.meaning}`;
+        document.getElementById("bookmark-btn").setAttribute("onclick", `bookmarkWord('${wordData.word}', '${wordData.meaning}')`);
+    } catch (error) {
+        console.error("Error fetching word:", error);
+    }
+}
+
+function bookmarkWord(word, meaning) {
+    if (!bookmarks.some(item => item.word === word)) {
+        bookmarks.push({ word, meaning });
+        localStorage.setItem("bookmarkedWords", JSON.stringify(bookmarks));
+        alert("Word Bookmarked!");
+        loadBookmarks();
+    } else {
+        alert("Already bookmarked!");
+    }
+}
+
+function loadBookmarks() {
+    const bookmarksContainer = document.getElementById("bookmarks-container");
+    bookmarks = JSON.parse(localStorage.getItem("bookmarkedWords")) || [];
+    bookmarks.forEach(item => {
+        let div = document.createElement("div");
+        div.classList.add("bookmark-item");
+        div.innerHTML = `<strong>${item.word}</strong>: ${item.meaning}`;
+        bookmarksContainer.appendChild(div);
+    });
+}
