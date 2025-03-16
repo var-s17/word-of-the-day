@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Word Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c9f126;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+        .search-box {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 2px solid #007BFF;
+            font-size: 16px;
+        }
+        .search-btn {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background:#071422;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-btn:hover {
+            background-color: #002955;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: none;
+            width: 350px;
+            text-align: center;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        async function searchWord() {
+            let word = document.getElementById("search-input").value.trim().toLowerCase();
+            let result = document.getElementById("result");
+            let errorDiv = document.getElementById("error");
+
+            if (!word) {
+                errorDiv.textContent = "Please enter a word to search!";
+                result.style.display = "none";
+                return;
+            }
+
+            try {
+                let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                let data = await response.json();
+
+                if (data[0]?.meanings) {
+                    result.innerHTML = `<h3>${word}</h3><p><strong>Meaning:</strong> ${data[0].meanings[0].definitions[0].definition}</p>`;
+                    result.style.display = "block";
+                    errorDiv.textContent = "";
+                } else {
+                    errorDiv.textContent = "Meaning not found!";
+                    result.style.display = "none";
+                }
+            } catch (error) {
+                errorDiv.textContent = "Error fetching data. Please try again later.";
+                result.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="C:\Users\Windows\Downloads\DALL·E 2025-03-15 17.13.51 - A modern and minimalistic logo for 'Word of the Day' featuring the initials 'W' and 'D' in a stylish, rounded font. The logo should have a clean and p.webp" alt="Word of the Day Logo" class="logo">
+        <div class="navbar-container">
+            <h1 class="navbar-title">Word of the Day</h1>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" onclick="changeLanguage()">Language</a></li>
+                <li><a href ="quiz.html">Quiz</a></li>
+                <li><a href="searxh.html">Search</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h1>Word Search</h1>
+        <input type="text" id="search-input" class="search-box" placeholder="Search for a word...">
+        <button onclick="searchWord()" class="search-btn">Search</button>
+        <p id="error" class="error"></p>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        async function searchWord() {
+            const query = document.getElementById("search-input").value.trim().toLowerCase();
+            const resultDiv = document.getElementById("result");
+            const errorDiv = document.getElementById("error");
+
+            if (!query) {
+                errorDiv.textContent = "Please enter a word to search!";
+                resultDiv.style.display = "none";
+                return;
+            }
+
+            try {
+                let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`);
+                let data = await response.json();
+
+                if (response.ok && data.length > 0) {
+                    let definition = data[0]?.meanings[0]?.definitions[0]?.definition || "No definition found.";
+                    result.innerHTML = `<h2>${query}</h2><p>${definition}</p>`;
+                    result.style.display = "block";
+                    errorDiv.textContent = "";
+                } else {
+                    errorDiv.textContent = "Meaning not found!";
+                    resultDiv.style.display = "none";
+                }
+            } catch (error) {
+                errorDiv.textContent = "Error fetching data. Try again later.";
+                resultDiv.style.display = "none";
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.clear(); // Clear user data
+            window.location.href = "index.html"; // Reload the home page
+        }
+    </script>
+</body>
+</html>
