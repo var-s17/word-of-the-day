@@ -258,7 +258,7 @@ body {
 
 .about-section h1,
 .about-section h2 {
-    color: #781717;
+    color: #071422;
     margin-bottom: 10px;
 }
 
@@ -361,14 +361,20 @@ body {
 
 /* Contact Section Styling */
 .contact-section {
-    width: 100%; /* Full width */
-    background-color: #672929; /* Black background */
+    width: 100vw; /* Ensures full width across the viewport */
+    max-width: 100%; /* Prevents content overflow */
+    background-color: #071422; /* Dark background */
     color: #fff; /* White text */
     padding: 40px 20px; /* Spacing inside the section */
     text-align: center; /* Center the text */
     border-top: 2px solid #333; /* Add a top border */
     box-sizing: border-box; /* Ensure padding doesn't overflow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .contact-section h2 {
     font-size: 2em;
@@ -439,4 +445,88 @@ footer.contact-section {
 #startQuizBtn:disabled {
     background-color: #b0c4de;
     cursor: not-allowed;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Keeps items spaced nicely */
+    padding: 10px 20px;
+    background: #007BFF;
+}
+
+.logo {
+    width: 50px;  /* Smaller size */
+    height: 50px;
+    border-radius: 50%;  /* Makes it round */
+    object-fit: cover;  /* Ensures image fills the space */
+    margin-left: 20px;  /* Moves it slightly right */
+}
+#about {
+    text-align: center;
+    padding: 50px;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything */
+    justify-content: center;
+}
+
+.logo-wrapper {
+    width: 200px; /* Adjust size */
+    height: 200px;
+    border-radius: 50%; /* Makes it round */
+    overflow: hidden; /* Ensures round shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1; /* Optional: Add a background */
+    margin-bottom: 20px;
+}
+
+.about-logo {
+    width: 100%; /* Fills the wrapper */
+    height: auto;
+    object-fit: cover; /* Ensures it looks good */
+}
+
+
+.contact-container img {
+    display: flex;
+    width: 200px;  /* Adjust the size as needed */
+    height: 200px;
+    border-radius: 50%; /* If you want a round image */
+    object-fit: cover;
+}
+
+
+/* About Section - Responsive and Centered */
+.about-container {
+    max-width: 1200px; /* Restrict width */
+    width: 90%; /* Responsive */
+    margin: 0 auto; /* Center horizontally */
+    padding: 40px 20px; /* Spacing */
+    text-align: center;
+    overflow: hidden; /* Prevent content from expanding */
+}
+
+/* Fix horizontal scrolling */
+body {
+    overflow-x: hidden; /* Stop horizontal scrolling */
+}
+
+/* Contact Section - Full Width but Aligned */
+.contact-container {
+    width: 100%; /* Full width but controlled */
+    max-width: 1200px; /* Align with about-container */
+    margin: 0 auto; /* Center it */
+    padding: 40px 20px;
+    background-color: #071422;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
